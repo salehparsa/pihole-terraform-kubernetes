@@ -1,8 +1,8 @@
 resource "kubernetes_service" "tcp" {
   metadata {
     name = "${var.kubernetes_service}-tcp"
+    namespace = "${var.namespace}"
   }
-  namespace = "${var.namespace}"
   spec {
     selector = {
       app = "${var.app_name}"
@@ -30,8 +30,8 @@ resource "kubernetes_service" "tcp" {
 resource "kubernetes_service" "udp" {
   metadata {
     name = "${var.kubernetes_service}-udp"
+    namespace = "${var.namespace}"
   }
-  namespace = "${var.namespace}"
   spec {
     selector = {
       app = "${var.app_name}"
