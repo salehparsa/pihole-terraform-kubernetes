@@ -4,6 +4,7 @@ resource "kubernetes_pod" "pihole-pod" {
     labels = {
       app = "${var.app_name}"
     }
+    namespace = "${var.namespace}"
   }
 
   spec {
@@ -17,13 +18,32 @@ resource "kubernetes_pod" "pihole-pod" {
             protocol = "TCP"
         }
         port{
+            container_port = 443
+            name = "https"
+            protocol = "TCP"
+        }
+        port{
             container_port = 53
-            name = "dns"
+            name = "dns-tcp"
+            protocol = "TCP"
+        }
+        port{
+            container_port = 53
+            name = "dns53"
+            protocol = "UDP"
+        }
+        port{
+            container_port = 67
+            name = "dns67"
             protocol = "UDP"
         }
         env {
         name  = "TZ"
         value = "Europe/Berlin"
+        }
+        env {
+        name  = "WEBPASSWORD"
+        value = "${var.password}"
         }
 
         }

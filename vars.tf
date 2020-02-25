@@ -8,9 +8,9 @@ variable "config_context_cluster" {
   default     = "kubernetes"
 }
 
-variable "kubernetes_namespace" {
+variable "namespace" {
   description = "Name of the Namespace"
-  default     = "default"
+  default     = "pihole"
 }
 
 variable "pod_name" {
@@ -36,4 +36,8 @@ variable "container_image" {
 variable "container_name" {
   description = "Container to Pull"
   default     = "pihole"
+}
+
+variable "password" {
+  description = "Passwrod of the Web Interface"
 }
