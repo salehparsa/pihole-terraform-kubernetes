@@ -2,6 +2,7 @@ resource "kubernetes_service" "tcp" {
   metadata {
     name = "${var.kubernetes_service}-tcp"
   }
+  namespace = "${var.namespace}"
   spec {
     selector = {
       app = "${var.app_name}"
@@ -14,6 +15,13 @@ resource "kubernetes_service" "tcp" {
       name        =  "http"
     }
 
+    port {
+      protocol    = "DNS"
+      port        = 53
+      target_port = 53
+      name        =  "dns"
+    }
+
     type = "LoadBalancer"
   }
 }
@@ -23,6 +31,7 @@ resource "kubernetes_service" "udp" {
   metadata {
     name = "${var.kubernetes_service}-udp"
   }
+  namespace = "${var.namespace}"
   spec {
     selector = {
       app = "${var.app_name}"
