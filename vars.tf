@@ -8,6 +8,12 @@ variable "config_context_cluster" {
   default     = "kubernetes"
 }
 
+variable "replicas" {
+  description = "Number of replicas you need"
+  default     = "2"
+}
+
+
 variable "namespace" {
   description = "Name of the Namespace"
   default     = "pihole"
