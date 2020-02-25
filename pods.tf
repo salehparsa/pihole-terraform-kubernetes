@@ -6,7 +6,20 @@ resource "kubernetes_pod" "pihole-pod" {
     }
     namespace = "${var.namespace}"
   }
-
+spec {
+    selector {
+      matchLabels {
+        app = "${var.app_name}"
+      }
+    }
+    replicas = 1
+    template {
+      metadata {
+        labels {
+          app = "${var.app_name}"
+        }
+      }
+    }
   spec {
         container {
           image = "${var.container_image}"
@@ -47,5 +60,6 @@ resource "kubernetes_pod" "pihole-pod" {
         }
 
         }
+    }
   }
 }
