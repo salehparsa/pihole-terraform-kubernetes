@@ -1,1 +1,1 @@
-password = 
+password = "mycoolpassword1234%"

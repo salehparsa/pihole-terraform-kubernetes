@@ -43,7 +43,7 @@ resource "kubernetes_pod" "pihole-pod" {
         }
         env {
         name  = "WEBPASSWORD"
-        value = "${var.password}"
+        value =  "${var.password}"
         }
 
         }
