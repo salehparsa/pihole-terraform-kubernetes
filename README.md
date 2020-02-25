@@ -19,16 +19,20 @@ variable "config_context_cluster" {
 
 ```
 
+## Configuring Password
+
+For configuring the password, you need to set it in ```secret.tfvars``` file. You can easilz rename ```secret-example.tfvars``` to ```secret.tfvars```  and reuse it.
+
 ## Terraform Deployment
 
 Validate the templates:
 
 ```
-terraform plan
+terraform plan -var-file="secret.tfvars"
 ```
 
 Deploy the code:
 
 ```
-terraform apply
+terraform apply -var-file="secret.tfvars"
 ```

@@ -51,7 +51,7 @@ resource "kubernetes_deployment" "pihole" {
             protocol = "UDP"
         }
         env {
-            name  = "Time Zone"
+            name  = "TZ"
             value = "Europe/Berlin"
         }
         env {
@@ -59,11 +59,11 @@ resource "kubernetes_deployment" "pihole" {
             value =  "${var.password}"
         }
         env {
-            name  = "Primary DNS"
+            name  = "DNSOne"
             value = "${var.primary_dns}"
         }
         env {
-            name  = "Secondary DNS"
+            name  = "DNSTwo"
             value = "${var.secondary_dns}"
         }
       }

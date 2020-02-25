@@ -16,7 +16,7 @@ resource "kubernetes_service" "tcp" {
     }
 
     port {
-      protocol    = "DNS"
+      protocol    = "TCP"
       port        = 53
       target_port = 53
       name        =  "dns"
@@ -40,7 +40,7 @@ resource "kubernetes_service" "udp" {
       protocol    = "UDP"
       port        = 53
       target_port = 53
-      name        =  "dns"
+      name        = "dns"
     }
 
     type = "NodePort"
