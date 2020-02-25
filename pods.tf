@@ -51,12 +51,20 @@ spec {
             protocol = "UDP"
         }
         env {
-        name  = "TZ"
-        value = "Europe/Berlin"
+            name  = "Time Zone"
+            value = "Europe/Berlin"
         }
         env {
-        name  = "WEBPASSWORD"
-        value =  "${var.password}"
+            name  = "WEBPASSWORD"
+            value =  "${var.password}"
+        }
+        env {
+            name  = "Primary DNS"
+            value = "${var.primary_dns}"
+        }
+        env {
+            name  = "Secondary DNS"
+            value = "${var.secondary_dns}"
         }
 
         }
