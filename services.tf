@@ -44,6 +44,6 @@ resource "kubernetes_service" "udp" {
       name        = "dns"
     }
 
-    type = "NodePort"
+    type = "LoadBalancer"
   }
 }

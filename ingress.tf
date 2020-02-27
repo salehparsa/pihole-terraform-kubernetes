@@ -20,7 +20,7 @@ resource "kubernetes_ingress" "example_ingress" {
         path {
           backend {
             service_name = "${var.kubernetes_service}-udp"
-            service_port = 31084
+            service_port = 53
           }
 
           path = "/"
