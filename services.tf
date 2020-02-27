@@ -36,6 +36,7 @@ resource "kubernetes_service" "udp" {
     selector = {
       app = "${var.app_name}"
     }
+    session_affinity = "ClientIP"   
     port {
       protocol    = "UDP"
       port        = 53
@@ -43,6 +44,6 @@ resource "kubernetes_service" "udp" {
       name        = "dns"
     }
 
-    type = "NodePort"
+    type = "LoadBalancer"
   }
 }
