@@ -13,7 +13,6 @@ variable "replicas" {
   default     = "2"
 }
 
-
 variable "namespace" {
   description = "Name of the Namespace"
   default     = "pihole"
@@ -54,7 +53,7 @@ variable "secondary_dns" {
   default     = "4.4.4.4"
 }
 
-
 variable "password" {
   description = "Passwrod of the Web Interface"
 }
+

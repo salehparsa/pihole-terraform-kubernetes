@@ -1,73 +1,74 @@
 resource "kubernetes_deployment" "pihole" {
   metadata {
-    name = "${var.app_name}"
+    name = var.app_name
     labels = {
-      app = "${var.app_name}"
+      app = var.app_name
     }
-    namespace = "${var.namespace}"
+    namespace = var.namespace
   }
 
   spec {
-    replicas = "${var.replicas}"
+    replicas = var.replicas
     selector {
       match_labels = {
-        app = "${var.app_name}"
+        app = var.app_name
       }
     }
     template {
       metadata {
         labels = {
-          app = "${var.app_name}"
+          app = var.app_name
         }
       }
-    spec {
+      spec {
         container {
-            image = "${var.container_image}"
-            name  = "${var.container_name}"
+          image = var.container_image
+          name  = var.container_name
 
-        port{
+          port {
             container_port = 80
-            name = "http"
-            protocol = "TCP"
-        }
-        port{
+            name           = "http"
+            protocol       = "TCP"
+          }
+          port {
             container_port = 443
-            name = "https"
-            protocol = "TCP"
-        }
-        port{
+            name           = "https"
+            protocol       = "TCP"
+          }
+          port {
             container_port = 53
-            name = "dns-tcp"
-            protocol = "TCP"
-        }
-        port{
+            name           = "dns-tcp"
+            protocol       = "TCP"
+          }
+          port {
             container_port = 53
-            name = "dns53"
-            protocol = "UDP"
-        }
-        port{
+            name           = "dns53"
+            protocol       = "UDP"
+          }
+          port {
             container_port = 67
-            name = "dns67"
-            protocol = "UDP"
-        }
-        env {
+            name           = "dns67"
+            protocol       = "UDP"
+          }
+          env {
             name  = "TZ"
             value = "Europe/Berlin"
-        }
-        env {
+          }
+          env {
             name  = "WEBPASSWORD"
-            value =  "${var.password}"
-        }
-        env {
+            value = var.password
+          }
+          env {
             name  = "DNSOne"
-            value = "${var.primary_dns}"
-        }
-        env {
+            value = var.primary_dns
+          }
+          env {
             name  = "DNSTwo"
-            value = "${var.secondary_dns}"
+            value = var.secondary_dns
+          }
         }
       }
-     }
     }
   }
 }
+

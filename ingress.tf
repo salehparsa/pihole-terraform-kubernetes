@@ -1,11 +1,10 @@
 resource "kubernetes_ingress" "example_ingress" {
   metadata {
-    name = "${var.app_name}"
-    namespace = "${var.namespace}"
+    name      = var.app_name
+    namespace = var.namespace
   }
 
   spec {
-
     rule {
       http {
         path {
@@ -27,6 +26,6 @@ resource "kubernetes_ingress" "example_ingress" {
         }
       }
     }
-
   }
 }
+
